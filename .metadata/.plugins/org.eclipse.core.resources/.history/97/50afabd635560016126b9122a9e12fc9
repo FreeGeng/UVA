@@ -1,0 +1,63 @@
+import java.util.*;
+
+public class Main {
+
+	static Scanner scanner = new Scanner(System.in);
+	static Main Main = new Main();
+
+	public static void main(String atgs[]) {
+		Main.start();
+	}
+
+	public void start() {
+		int total = scanner.nextInt();
+		for (int i = 0; i < total; i++) {
+			int a = scanner.nextInt();
+			int temp[] = new int[1000];
+			int tempIndex = -1;
+			judgeIndex(a, temp, tempIndex);
+			System.out.println(tempIndex);
+		}
+
+	}
+
+	public int[] createFib() {
+		int fib[] = new int[1000];
+		fib[0] = 1;
+		fib[1] = 2;
+		for (int i = 2; i < 1000; i++) {
+			fib[i] = fib[i - 1] + fib[i - 2];
+		}
+		return fib;
+	}
+
+	public void judgeIndex(int a, int[] temp, int tempIndex) {
+		int MaxIndex = 0;
+		tempIndex++;
+		int[] fib = Main.createFib();
+		for (int i = 0; i <= 1000; i++) {
+			if (fib[i] > a) {
+				MaxIndex = i;
+				temp[tempIndex] = fib[MaxIndex - 1];
+				a -= fib[MaxIndex - 1];
+				if (a != 0) {
+					judgeIndex(a, temp, tempIndex);
+					break;
+				} else {
+					break;
+				}
+			} else if (fib[i] == a) {
+				MaxIndex = i;
+				temp[tempIndex] = fib[MaxIndex];
+				a -= fib[MaxIndex];
+				if (a != 0) {
+					judgeIndex(a, temp, tempIndex);
+					break;
+				} else {
+					break;
+				}
+			}
+		}
+	}
+
+}
