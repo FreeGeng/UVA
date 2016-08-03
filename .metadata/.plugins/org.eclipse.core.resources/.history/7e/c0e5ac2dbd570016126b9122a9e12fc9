@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Main {
+
+	static Scanner scanner = new Scanner(System.in);
+
+	public static void main(String args[]) {
+         Main main = new Main();
+         main.start();
+	}
+	
+	public void start(){
+	  List<Integer> list = new ArrayList<Integer>();
+	  while(true){
+		 if(!scanner.nextLine().equals("")){
+		  list.add(scanner.nextInt());
+		  System.out.println(list);  
+		 }
+		 else{
+			 break;
+		 }
+	  }
+	 
+	}
+}
